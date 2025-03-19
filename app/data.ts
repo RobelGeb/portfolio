@@ -25,6 +25,7 @@ type BlogPost = {
 type SocialLink = {
   label: string
   link: string
+  color: string
 }
 
 type TechStack = {
@@ -42,15 +43,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://res.cloudinary.com/dyzev9uto/video/upload/v1742078122/u3m5pr3ba8kerhqn4258.mp4',
     id: 'project1',
-  },
-  {
-    name: 'WeatherAPI',
-    description:
-      'Weather application that displays local weather conditions and 5 day forecast',
-    link: 'https://www.weather.com',
-    video:
-      '',
-    id: 'project2',
   },
 ]
 
@@ -81,85 +73,82 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-// export const BLOG_POSTS: BlogPost[] = [
-//   {
-//     title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-//     description: 'How AI is changing the way we design',
-//     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-//     uid: 'blog-1',
-//   },
-//   {
-//     title: 'Why I left my job to start my own company',
-//     description:
-//       'A deep dive into my decision to leave my job and start my own company',
-//     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-//     uid: 'blog-2',
-//   },
-//   {
-//     title: 'What I learned from my first year of freelancing',
-//     description:
-//       'A look back at my first year of freelancing and what I learned',
-//     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-//     uid: 'blog-3',
-//   },
-// ]
-
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
     link: 'https://github.com/robelgeb',
+    color: 'dark:hover:bg-green-800',
   },
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/robelgeb',
+    color: 'dark:hover:bg-blue-500',
   },
   {
     label: 'Resume',
-    link: '',
+    link: 'robel-geb-resume-mar25.pdf',
+    color: 'dark:hover:bg-amber-900',
   },
 ]
 
 export const TECH_STACK: TechStack[] = [
   {
     label: 'React',
-    logo: '',
-    color: '',
+    logo: '/react.svg',
+    color: 'dark:bg-sky-600',
   },
   {
     label: 'Next.JS',
-    logo: '',
-    color: '',
+    logo: '/next-js.svg',
+    color: 'dark:bg-zinc-600',
   },
   {
     label: 'JavaScript',
-    logo: '',
-    color: '',
+    logo: '/jslogo.svg',
+    color: 'dark:bg-yellow-600',
   },
   {
     label: 'Node.JS',
-    logo: '',
-    color: '',
+    logo: '/nodejs.svg',
+    color: 'dark:bg-lime-900',
   },
   {
     label: 'HTML',
-    logo: '',
-    color: '',
+    logo: '/html-5.svg',
+    color: 'dark:bg-orange-800',
   },
   {
     label: 'CSS',
-    logo: '',
-    color: '',
+    logo: './/css-3.svg',
+    color: 'dark:bg-blue-900',
+  },
+  
+  {
+    label: 'TailwindCSS',
+    logo: '/tailwindcss.svg',
+    color: 'dark:bg-sky-700',
+  },
+  { 
+    label: 'AWS',
+    logo: '/aws.svg',
+    color: 'dark:bg-orange-700',
   },
   {
     label: 'Git',
-    logo: '',
-    color: '',
+    logo: '/git-scm-icon.svg',
+    color: 'dark:bg-red-800',
   },
   {
     label: 'PostgreSQL',
-    logo: '',
-    color: '',
+    logo: '/postgresql.svg',
+    color: 'dark:bg-sky-800',
   },
+  {
+    label: 'Figma',
+    logo: '/figma.svg',
+    color: 'dark:bg-purple-700',
+  },
+
 ]
 
 export const EMAIL = 'robelgebrem@gmail.com'

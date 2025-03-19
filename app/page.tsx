@@ -11,12 +11,14 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
   EMAIL,
   SOCIAL_LINKS,
+  TECH_STACK
 } from './data'
 
 const VARIANTS_CONTAINER = {
@@ -88,18 +90,51 @@ function ProjectVideo({ src }: ProjectVideoProps) {
   )
 }
 
+function MagneticTechStack({
+  children,
+  logo,
+  color,
+}: {
+  children: React.ReactNode
+  logo: string
+  color: string
+}) {
+  return (
+    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+      <div
+        className={`group relative inline-flex shrink-0 items-center justify-end gap-[3px] rounded-full bg-zinc-100 px-3 py-1 mb-3 text-md text-black 
+          transition-colors duration-200 hover:text-zinc-50 dark:hover:bg-zinc-800 dark:text-zinc-100 ${color}`}
+      >
+        <Image
+          src={logo}
+          alt='logo'
+          width={4}
+          height={4}
+          className="h-5 w-5"
+        />
+        {children}
+      
+      </div>
+    </Magnetic>
+  )
+}
+
+
 function MagneticSocialLink({
   children,
   link,
+  color,
 }: {
   children: React.ReactNode
   link: string
+  color: string
 }) {
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className={`group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-md text-black 
+          transition-colors duration-200 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 ${color}`}
       >
         {children}
         <svg
@@ -139,10 +174,6 @@ export default function Personal() {
             I am a developer and UX/UI designer based in Seattle, WA and I created this website 
             to showcase some of my previous learning and experience.
           </p>
-          <p >
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
-          </p>
         </div>
       </motion.section>
 
@@ -150,9 +181,13 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Tech Stack</h3>
-        <div>
-          
+        <h3 className="mb-5 text-2xl font-medium">Current Tech Stack</h3>
+        <div className='flex items-center justify-start space-x-3 flex-wrap'>
+        {TECH_STACK.map((label) => (
+            <MagneticTechStack key={label.label} logo={label.logo} color={label.color}>
+              {label.label}
+            </MagneticTechStack>
+          ))}
         </div>
       </motion.section>
 
@@ -160,7 +195,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Project</h3>
+        <h3 className="mb-5 text-2xl font-medium">Selected Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
@@ -189,7 +224,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <h3 className="mb-5 text-2xl font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
@@ -227,42 +262,6 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        {/* <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div> */}
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
           Feel free to contact me at{' '}
@@ -272,10 +271,11 @@ export default function Personal() {
         </p>
         <div className="flex items-center justify-start space-x-3">
           {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
+            <MagneticSocialLink key={link.label} link={link.link} color={link.color}>
               {link.label}
             </MagneticSocialLink>
           ))}
+
         </div>
       </motion.section>
     </motion.main>
