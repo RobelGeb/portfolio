@@ -103,7 +103,7 @@ function MagneticTechStack({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <div
         className={`group relative inline-flex shrink-0 items-center justify-end gap-[3px] rounded-full bg-zinc-100 px-3 py-1 mb-3 text-md text-black 
-          transition-colors duration-200 hover:text-zinc-50 dark:hover:bg-zinc-800 dark:text-zinc-100 ${color}`}
+          transition-colors duration-200 dark:hover:bg-zinc-800 dark:text-zinc-100 ${color}`}
       >
         <Image
           src={logo}
@@ -134,7 +134,7 @@ function MagneticSocialLink({
       <a
         href={link}
         className={`group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-md text-black 
-          transition-colors duration-200 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 ${color}`}
+          transition-colors duration-200 dark:bg-zinc-800 dark:text-zinc-100 ${color}`}
       >
         {children}
         <svg
@@ -214,6 +214,14 @@ export default function Personal() {
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
+              </div>
+              <div className='flex items-center justify-start space-x-1.5 flex-wrap'>
+              {
+              TECH_STACK.filter((item) => project.tech.includes(item.label)).map((label) => (
+                  <MagneticTechStack key={label.label} logo={label.logo} color={label.color}>
+                    {label.label}
+                  </MagneticTechStack>
+                ))}
               </div>
             </div>
           ))}
