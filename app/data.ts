@@ -107,7 +107,7 @@ export const TECH_STACK: TechStack[] = [
   {
     label: 'JavaScript',
     logo: '/jslogo.svg',
-    color: 'dark:bg-yellow-600 text-yellow-600',
+    color: 'dark:bg-yellow-600 hover:text-yellow-600',
   },
   {
     label: 'Node.JS',
