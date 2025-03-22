@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import { useMousePosition } from './mouseTracker'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -27,6 +28,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-radial from-white to-blue-200 dark:from-stone-900 dark:to-blue-950  tracking-tight antialiased dark:bg-zinc-950`}
+        className={`${geist.variable} ${geistMono.variable} tracking-tight antialiased`}
       >
         <ThemeProvider
           enableSystem={true}
