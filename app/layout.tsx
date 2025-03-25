@@ -5,7 +5,6 @@ import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
 import { useMousePosition } from './mouseTracker'
-import LayoutWrapper from './layoutWrapper'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -37,22 +36,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable} ${geistMono.variable} tracking-tight antialiased`}>
+      <body
+        className={`${geist.variable} ${geistMono.variable} tracking-tight antialiased`}
+      >
         <ThemeProvider
           enableSystem={true}
           attribute="class"
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="pointer-events-none z-30 relative mx-auto w-full max-w-screen-sm flex-1 pt-20 ">
-          <LayoutWrapper>
-            <Header />
-            {/* <LayoutWrapper> */}
-            {children}
-            {/* </LayoutWrapper> */}
-            <Footer />
-          </LayoutWrapper>
-          </div>
+              <div className="relative mx-auto w-full max-w-screen-sm flex-1 pt-20 ">
+                <Header />
+                {children}
+                <Footer />
+              </div>
         </ThemeProvider>
       </body>
     </html>
